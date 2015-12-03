@@ -10,22 +10,35 @@
 				<input type="checkbox" checked="{{hideFinished}}">
 				Hide Finished Resolutions
 			</label>
+			{{> loginButtons}}
+			{{#if currentUser}}
 			<form class="new-todo">
 				<input type="text" name="title" placeholder="What's there to do?">
 				<input type="submit" value="Submit">
 			</form>
+			{{/if}}
 		</header>
 		<ul>
 			{{# each todo}}
 			{{> todos}}
 			{{/each}}
 		</ul>
+
 	</div>
 </body>
 
 <template name="todos">
   <li class="{{#if checked}}checked{{/if}}">
   	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
+  	{{#if isOwner}}
+  		<button class="toggle-private">
+  			{{#if private}}
+  				Private
+  			{{else}}
+  				Public
+  			{{/if}}
+  		</button>
+  	{{/if}}
   	<span class="text">{{title}} </span>
   	<button class="delete">Remove</button>
   </li>
