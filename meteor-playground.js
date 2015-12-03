@@ -3,7 +3,15 @@ Todolist = new Mongo.Collection('todo')
 if (Meteor.isClient) {
   Template.body.helpers({
     todo: function() {
-      return Todolist.find();
+      if(Session.get('hideFinished')) {
+        return Todolist.find({checked: {$ne: true}});
+        //as long as checked is Not Equal to true, return the to do
+      } else {
+        return Todolist.find();
+      }
+    },
+    hideFinished: function() {
+      return Session.get('hideFinished';)
     }
   });
 
@@ -23,6 +31,11 @@ if (Meteor.isClient) {
       //eliminating the previous value
       return false;
       //makes sure the page doesn't refresh
+    },
+    'change .hide-finished': function(event) {
+      Session.set('hideFinished', event.target.checked);
+      //creating the session variable if it doesn't exist and sets it to whatever the current state is
+
     }
   });
 
