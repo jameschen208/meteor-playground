@@ -3,13 +3,26 @@
 </head>
 
 <body>
-  <ul>
-  	{{# each todo}}
-  		{{> todos}}
-  	{{/each}}
-  </ul>
+	<div class="container">
+		<header>
+			<h1>To Do List</h1>
+			<form class="new-todo">
+				<input type="text" name="title" placeholder="What's there to do?">
+				<input type="submit" value="Submit">
+			</form>
+		</header>
+		<ul>
+			{{# each todo}}
+			{{> todos}}
+			{{/each}}
+		</ul>
+	</div>
 </body>
 
 <template name="todos">
-  <li>{{title}}</li>
+  <li class="{{#if checked}}checked{{/if}}">
+  	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
+  	<span class="text">{{title}} </span>
+  	<button class="delete">Remove</button>
+  </li>
 </template>
