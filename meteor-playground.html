@@ -1,0 +1,15 @@
+<head>
+  <title>meteor-playground</title>
+</head>
+
+<body>
+  <ul>
+  	{{# each todo}}
+  		{{> todos}}
+  	{{/each}}
+  </ul>
+</body>
+
+<template name="todos">
+  <li>{{title}}</li>
+</template>
