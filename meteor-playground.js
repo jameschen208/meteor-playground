@@ -66,11 +66,18 @@ if (Meteor.isServer) {
   });
 
   Meteor.publish("todo", function(){
-    return Todolist.find();
+    return Todolist.find({
+      $or: [
+        { private: {$ne: true} },
+        { owner: this.userId }
+      ]
+    });
   });
 }
+
 // ************* METHODS
 Meteor.methods({
+//*****CREATE
   addTodo: function(t) {
     Todolist.insert({
       //insert in the following into the Todolist model or collection
@@ -80,13 +87,24 @@ Meteor.methods({
         owner: Meteor.userId()
     });
   },
+//*****UPDATE
   updateTodo: function(id, checked) {
+    var d = Todolist.findOne(id);
+    if(d.owner !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
     Todolist.update(id, {$set: {checked:checked}});
     //what's the value of this, it flips the current value to the opposite boolean
   },
+//*****DELETE
   deleteTodo: function(id) {
+    var d = Todolist.findOne(id);
+    if(d.owner !== Meteor.userId()) {
+      throw new Meteor.Error('not-authorized');
+    }
     Todolist.remove(id);
   },
+
   setPrivate: function(id, private) {
     var d = Todolist.findOne(id);
 

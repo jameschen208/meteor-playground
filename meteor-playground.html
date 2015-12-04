@@ -29,8 +29,8 @@
 
 <template name="todos">
   <li class="{{#if checked}}checked{{/if}}">
-  	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
   	{{#if isOwner}}
+  	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
   		<button class="toggle-private">
   			{{#if private}}
   				Private
@@ -40,6 +40,8 @@
   		</button>
   	{{/if}}
   	<span class="text">{{title}} </span>
+  	{{#if isOwner}}
   	<button class="delete">Remove</button>
+  	{{/if}}
   </li>
 </template>
