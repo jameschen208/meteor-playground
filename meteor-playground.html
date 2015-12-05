@@ -3,54 +3,34 @@
 </head>
 
 <body>
-	<nav class="blue">
-		<div class="container">
-			{{> loginButtons}}
-		</div>
-	</nav>
-
 	<div class="container">
-		<h1 class="center">To Do List</h1>	
-	</div>
-	
-	<div class="container z-depth-1">
 		<header>
-			{{#if currentUser}}
+			<h1>To Do List</h1>
 			<label class="hide-finished">
-				<input type="checkbox" checked="{{hideFinished}}">
-				Hide Finished
 			</label>
+			{{> loginButtons}}
+			{{#if currentUser}}
 			<form class="new-todo">
+				<input type="checkbox" checked="{{hideFinished}}">
+				Hide Finished Resolutions
 				<input type="text" name="title" placeholder="What's there to do?">
 				<input type="submit" value="Submit">
 			</form>
 			{{/if}}
 		</header>
-		<ul class="ul-todo">
+		<ul>
 			{{# each todo}}
 			{{> todos}}
 			{{/each}}
 		</ul>
 	</div>
-	
-	<!-- <div class="container z-depth-1">
-		<div class="section">
-			<div class="row">
-				<div class="col s12 m6 center">
-
-				</div>
-				<div class="col s12 m6 center">
-					
-				</div>
-			</div>
-		</div>
-	</div> -->
-
+	<div class="container">
+		
+	</div>
 </body>
 
-<!-- TEMPLATE -->
 <template name="todos">
-  <li class="li-todo {{#if checked}}checked{{/if}}">
+  <li class="{{#if checked}}checked{{/if}}">
   	{{#if isOwner}}
   	<input type="checkbox" checked="{{checked}}" class="toggle-checked">
   		<button class="toggle-private">

@@ -5,21 +5,35 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+ 
+ 
 body {
   font-family: sans-serif;
   font-size: 16px;
-  background: #fff;
+  background: #2196f3;
   margin: 0;
 }
-
+ 
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 2em;
+  min-height: 100%;
+  background: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.75), 0 2px 5px 0 rgba(0, 0, 0, 0.75);
+}
+ 
 header {
-  margin-top: 20px;
-  padding: 0px 15px 15px 15px;
+  padding: 20px 15px 15px 15px;
   position: relative;
 }
  
 h1 {
   font-size: 2em;
+  margin: 0;
+  margin-bottom: 10px;
+  display: inline-block;
+  margin-right: 1em;
 }
  
 .new-todo input[type="text"] {
@@ -36,7 +50,7 @@ h1 {
   outline: 0;
 }
  
-ul.ul-todo {
+ul {
   margin: 0;
   padding: 0;
   background: white;
@@ -45,7 +59,7 @@ ul.ul-todo {
 .delete {
   float: right;
   font-weight: bold;
-  background: #2916f3;
+  background: #DE4F4F;
   color: #FFF;
   font-size: 1em;
   padding: 5px 10px;
@@ -53,7 +67,7 @@ ul.ul-todo {
   border-radius: 4px;;
 }
  
-li.li-todo {
+li {
   position: relative;
   list-style: none;
   padding: 20px 15px;
@@ -70,21 +84,4 @@ li.checked {
  
 li.checked .text {
   text-decoration: line-through;
-}
-
-/***** ACCORDION *****/
-.accordion{
-  opacity: 0;
-  padding: 0 20px;
-  font-size: 12px;
-  background: #FFF;
-  max-height: 0;
-  overflow: hidden;
-  transition:all 0.2s ease;
-}
-
-.accordion.open{
-  opacity: 1;
-  padding: 20px;
-  max-height: 400px;
 }
