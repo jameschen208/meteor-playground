@@ -116,6 +116,7 @@ li.checked .text {
     position: relative;
     text-align: center;
     height: 100%;
+    line-height: 200px;
   }
 
   .reveal-wrapper h1{
@@ -146,9 +147,9 @@ li.checked .text {
   .button{
     position: relative;
     text-align: center;
-    border: 5px dotted black;
     transition: background 0.3s ease;
     height: 100%;
+    line-height: 200px;
   }
 
   .bg{
@@ -180,4 +181,63 @@ li.checked .text {
       transform: scale(1.1, 1.35);
       opacity: 1;
     }
+  }
+  /*****CARD FLIP*****/
+  .three{
+    perspective: 800;
+  }
+  .card{
+    position: relative;
+    color: #fff;
+    text-align: center;
+    line-height: 200px;
+    margin: 20 auto;
+    width: 100%px;
+    height: 200px;
+    transition: all 0.6s ease;
+    transform-style: preserve-3d;
+  }
+  .front, .back{
+    background: #2196f3;
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
+  }
+
+  .back{
+    transform: rotateY(180deg)
+  }
+  .card:hover{
+    transform: rotateY(180deg);
+  }
+  /*****ACCORDION*****/
+  .accordion-toggle{
+    text-align: center;
+    transition:all 0.2s ease;
+  }
+  .accordion-toggle.white{
+    color: #fff;
+  }
+  .accordion{
+    opacity: 0;
+    padding: 0 20px;
+    font-size: 12px;
+    background: #FFF;
+    max-height: 0;
+    overflow: hidden;
+    transition:all 0.2s ease;
+  }
+  .accordion.open{
+    opacity: 1;
+    padding: 20px;
+    max-height: 400px;
+  }
+  .four{
+    transition:all 1s ease;
+  }
+  .four.blue{
+    background: #2196f3;
   }

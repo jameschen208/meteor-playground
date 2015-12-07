@@ -48,11 +48,31 @@
 
 		</div>
 		<div class="row">
+<!-- CARD FLIP -->
 			<div class="showcase three">
-			
+				<div class="card">
+					<div class="front">
+						<h1>James</h1>
+					</div>
+					<div class="back">
+						<h1>Creates</h1>
+					</div>
+				</div>
 			</div>
 			<div class="showcase four">
-				
+				<h4 class="accordion-toggle">Click Me!</h4>
+				<p class="accordion">
+					Hello World! My name is James and I am here to play with Javascript and CSS.
+				</p>
+				<script>
+					$(function(){
+						$('.accordion-toggle').on('click', function(){
+							$('.accordion').toggleClass('open');
+							$('.four').toggleClass('blue');
+							$('.accordion-toggle').toggleClass('white');
+						});
+					});
+				</script>
 			</div>
 		</div>
 	</div>

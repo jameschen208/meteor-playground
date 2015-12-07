@@ -24,6 +24,7 @@ if (Meteor.isClient) {
 
 // ************* EVENTS
   Template.body.events({
+    
     'submit .new-todo': function(event) {
       //when the submit is triggered, do things in the bracket
       var t = event.target.title.value;
